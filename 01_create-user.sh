@@ -8,10 +8,10 @@ fi
 useradd -m -p $PASSWORD -s /bin/bash $USERNAME
 
 # 2. CREATE LINKED FODLER
-mkdir /home/$USERNAME/project
+mkdir -p /home/$USERNAME/project
 
-mkdir /home/coder/project
-mkdir /home/jovyan/work
+mkdir -p /home/coder/project
+mkdir -p /home/jovyan/work
 mount --bind /home/$USERNAME/project /home/coder/project
 mount --bind /home/$USERNAME/project /home/jovyan/work
 
