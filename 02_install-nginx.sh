@@ -12,3 +12,7 @@ apt install -y nginx software-properties-common python-certbot-nginx
 systemctl start nginx
 systemctl enable nginx
 
+# ufw allow ports
+ufw allow 80
+ufw allow 443
+ufw allow 5432
