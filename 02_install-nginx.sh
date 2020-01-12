@@ -5,7 +5,7 @@ add-apt-repository ppa:certbot/certbot -y
 
 # Install
 apt update
-apt upgrade
+apt upgrade -y
 apt install -y\ 
     nginx\
     software-properties-common\
