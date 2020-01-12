@@ -1,3 +1,8 @@
+#!bin/sh
+if [ -f .env ]
+then
+  export $(cat .env | sed 's/#.*//g' | xargs)
+fi
 # RUN as root for the following: 
 # 1. CREATE NEW USER
 useradd -m -p $PASSWORD -s /bin/bash $USERNAME
