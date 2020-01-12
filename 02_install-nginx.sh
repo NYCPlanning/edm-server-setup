@@ -1,10 +1,12 @@
 # Add keys
 wget http://nginx.org/keys/nginx_signing.key
 apt-key add nginx_signing.key
-add-apt-repository ppa:certbot/certbot
+add-apt-repository ppa:certbot/certbot -y
 
 # Install
-apt update; apt install -y\ 
+apt update
+apt upgrade
+apt install -y\ 
     nginx\
     software-properties-common\
     python-certbot-nginx
