@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+    code-server:
+        container_name: code-server
+        image: codercom/code-server
+        restart: always
+        ports:
+          - "8080:8080"
+        volumes:
+          - /home/coder/project:/home/coder/project
+          - "/var/run/docker.sock:/var/run/docker.sock"
+        env_file:
+          - .env
+    jupyter:
+        container_name: jupyter
+        user: root
+        image: sptkl/datascience-notebook:latest
+        restart: always
+        ports:
+            - "8888:8888"
+        volumes:
+            - /home/jovyan/work:/home/jovyan/work
+            - "/var/run/docker.sock:/var/run/docker.sock"
+        environment:
+            GRANT_SUDO: "yes"
+            JUPYTER_ENABLE_LAB: "yes"
+        env_file:
+          - .env
+    pgadmin:
+        container_name: pgadmin
+        image: dpage/pgadmin4:latest
+        restart: always
+        ports:
+            - "8880:80"
+        env_file:
+          - .env
+        volumes: 
+          - ${PWD}/servers.json:/pgadmin4/servers.json
+        command:
+          - python setup.py --load-servers servers.json
+    postgis:
+        container_name: postgis
+        restart: always
+        image: mdillon/postgis:latest
+        ports:
+            - "5432:5432"
