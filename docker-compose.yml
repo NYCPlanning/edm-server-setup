@@ -6,10 +6,11 @@ services:
         image: sptkl/code:latest
         restart: always
         ports:
-          - "8080:8080"
+          - 8080:8080
         volumes:
           - /home/coder/project:/home/coder/project
-          - "/var/run/docker.sock:/var/run/docker.sock"
+          - /var/run/docker.sock:/var/run/docker.sock
+          - ~/.ssh:~/.ssh
         env_file:
           - .env
     jupyter:
@@ -18,10 +19,11 @@ services:
         image: sptkl/datascience-notebook:latest
         restart: always
         ports:
-            - "8888:8888"
+            - 8888:8888
         volumes:
             - /home/jovyan/work:/home/jovyan/work
-            - "/var/run/docker.sock:/var/run/docker.sock"
+            - /var/run/docker.sock:/var/run/docker.sock
+            - ~/.ssh:~/.ssh
         environment:
             GRANT_SUDO: "yes"
             JUPYTER_ENABLE_LAB: "yes"
@@ -32,7 +34,7 @@ services:
         image: dpage/pgadmin4:latest
         restart: always
         ports:
-            - "8880:80"
+            - 8880:80
         env_file:
           - .env
         volumes: 
@@ -44,4 +46,4 @@ services:
         restart: always
         image: mdillon/postgis:latest
         ports:
-            - "5432:5432"
+            - 5432:5432

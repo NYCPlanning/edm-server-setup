@@ -15,5 +15,12 @@ mkdir -p /home/jovyan/work
 mount --bind /home/$USERNAME/project /home/coder/project
 mount --bind /home/$USERNAME/project /home/jovyan/work
 
-# 3. Change ownership
+# 3. Change ownership and to sudo and docker group
 chown -R $USERNAME /home/$USERNAME
+usermod -aG docker $USERNAME
+usermod -aG sudo $USERNAME
+
+# 4. generate ssh-key
+su $USERNAME
+ssh-keygen -t rsa -N ''
+su root
