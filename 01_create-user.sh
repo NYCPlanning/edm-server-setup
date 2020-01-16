@@ -24,4 +24,4 @@ usermod -aG sudo $USERNAME
 # 4. generate ssh-key
 mkdir -p /home/$USERNAME/.ssh/id_rsa
 ssh-keygen -t rsa -f /home/$USERNAME/.ssh/id_rsa -N ''
-chown -R /home/$USERNAME/.ssh
+chown -R $USERNAME /home/$USERNAME/.ssh
