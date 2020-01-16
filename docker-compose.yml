@@ -10,7 +10,7 @@ services:
         volumes:
           - /home/coder/project:/home/coder/project
           - /var/run/docker.sock:/var/run/docker.sock
-          - ~/.ssh:~/.ssh
+          - ~/.ssh:/home/coder/.ssh
         env_file:
           - .env
     jupyter:
@@ -23,7 +23,7 @@ services:
         volumes:
             - /home/jovyan/work:/home/jovyan/work
             - /var/run/docker.sock:/var/run/docker.sock
-            - ~/.ssh:~/.ssh
+            - ~/.ssh:/home/jovyan/.ssh
         environment:
             GRANT_SUDO: "yes"
             JUPYTER_ENABLE_LAB: "yes"
