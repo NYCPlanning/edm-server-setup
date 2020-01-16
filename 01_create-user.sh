@@ -6,7 +6,6 @@ fi
 # RUN as root for the following: 
 # 1. CREATE NEW USER
 useradd -m -s /bin/bash $USERNAME
-echo "$PASSWORD" | passwd --stdin $USERNAME
 
 # 2. CREATE LINKED FODLER
 mkdir -p /home/$USERNAME/project
@@ -20,8 +19,3 @@ mount --bind /home/$USERNAME/project /home/jovyan/work
 chown -R $USERNAME /home/$USERNAME
 usermod -aG docker $USERNAME
 usermod -aG sudo $USERNAME
-
-# 4. generate ssh-key
-mkdir -p /home/$USERNAME/.ssh/id_rsa
-ssh-keygen -t rsa -f /home/$USERNAME/.ssh/id_rsa -N ''
-chown -R $USERNAME /home/$USERNAME/.ssh
