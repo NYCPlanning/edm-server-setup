@@ -3,7 +3,7 @@ version: '3'
 services:
     code-server:
         container_name: code-server
-        image: sptkl/code:latest
+        image: sptkl/code:74e7481b0587
         restart: always
         ports:
           - 8080:8080
